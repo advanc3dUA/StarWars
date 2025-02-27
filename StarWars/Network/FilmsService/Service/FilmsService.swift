@@ -7,9 +7,13 @@
 
 import Foundation
 
-final class FilmsService {
+final class FilmsService: FilmsServiceProtocol {
     private let urlString = "https://swapi.dev/api/films/"
-    private let networkService = NetworkService()
+    private let networkService: NetworkServiceProtocol
+    
+    init(networkService: NetworkServiceProtocol) {
+        self.networkService = networkService
+    }
     
     func fetchPlanets() async throws -> [Film] {
         guard let url = URL(string: urlString) else {
