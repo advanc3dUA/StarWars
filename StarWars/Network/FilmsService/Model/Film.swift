@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct Film: Decodable {
+struct Film: Decodable, Identifiable {
+    let id: UUID = UUID()
     let characters: [String]
     let created: Date
     let director: String
