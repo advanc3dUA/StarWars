@@ -11,15 +11,18 @@ import SwiftUI
 struct StarWarsApp: App {
     private let networkService: NetworkService
     private let filmsService: FilmsService
+    private let charactersService: CharactersService
     
     init() {
         self.networkService = NetworkService()
         self.filmsService = FilmsService(networkService: networkService)
+        self.charactersService = CharactersService(networkService: networkService)
     }
     
     var body: some Scene {
         WindowGroup {
-            EpisodesView(filmsService: filmsService)
+            EpisodesView(filmsService: filmsService, charactersService: charactersService)
+                .preferredColorScheme(.light)
         }
     }
 }
