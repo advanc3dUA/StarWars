@@ -10,6 +10,7 @@ import Foundation
 enum AppError: Error {
     case networkServiceError(NetworkServiceError)
     case filmsServiceError(FilmsServiceError)
+    case charactersServiceError(CharactersServiceError)
     
     enum NetworkServiceError: Error {
         case failedRequest(Int)
@@ -18,6 +19,10 @@ enum AppError: Error {
     }
     
     enum FilmsServiceError: Error {
+        case invalidURL
+    }
+    
+    enum CharactersServiceError: Error {
         case invalidURL
     }
 }
