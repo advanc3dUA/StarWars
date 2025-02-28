@@ -15,7 +15,9 @@ struct EpisodeDetailsView: View {
     }
     
     var body: some View {
-        Text("Hello, World!")
+        ZStack {
+            BackgroundView()
+        }
     }
 }
 
