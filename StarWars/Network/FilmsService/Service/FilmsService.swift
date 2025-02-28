@@ -15,7 +15,7 @@ final class FilmsService: FilmsServiceProtocol {
         self.networkService = networkService
     }
     
-    func fetchPlanets() async throws -> [Film] {
+    func fetchFilms() async throws -> [Film] {
         guard let url = URL(string: urlString) else {
             throw AppError.filmsServiceError(.invalidURL)
         }

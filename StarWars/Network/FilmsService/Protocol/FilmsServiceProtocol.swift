@@ -8,5 +8,5 @@
 import Foundation
 
 protocol FilmsServiceProtocol {
-    func fetchPlanets() async throws -> [Film]
+    func fetchFilms() async throws -> [Film]
 }
