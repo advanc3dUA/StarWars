@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct EpisodeView: View {
-    let film: Film
+    let episode: Episode
     
     var body: some View {
         ZStack {
@@ -20,13 +20,13 @@ struct EpisodeView: View {
                 .padding(5)
             
             VStack(alignment: .center) {
-                film.displayImage
+                episode.displayImage
                     .resizable()
                     .scaledToFit()
                 
                 Spacer()
                 
-                Text(film.title)
+                Text(episode.title)
                     .font(.headline)
                     .fontWeight(.bold)
                     .lineLimit(2, reservesSpace: true)
@@ -34,7 +34,7 @@ struct EpisodeView: View {
                 
                 Spacer()
                 
-                Text(film.releaseDate)
+                Text(episode.releaseDate)
                     .font(.subheadline)
                     .fontWeight(.bold)
             }
@@ -45,6 +45,7 @@ struct EpisodeView: View {
 }
 
 #Preview {
-    let film = Film(characters: [""], created: Date(), director: "Yuriy Gudimov", edited: Date(), episodeId: 1, openingCrawl: "Long long time ago in a galaxy far, far away...", planets: [""], producer: "Unknown", releaseDate: "1987-05-25", species: [""], starships: [""], title: "The episode title", url: "", vehicles: [""])
-    EpisodeView(film: film)
+    let characters = [Character(birthYear: "1966", eyeColor: "Brown", films: [""], gender: "", hairColor: "", height: "", homeworld: "", mass: "", name: "Yuriy Gudimov", skinColor: "", created: Date(), edited: Date(), species: [""], starships: [""], url: "", vehicles: [""])]
+    let episode = Episode(title: "The episode title", releaseDate: "1987-05-25", director: "Yuriy Gudimov", episodeId: 1, openingCrawl: "Long long time ago in a galaxy far, far away...", url: "", characters: characters)
+    EpisodeView(episode: episode)
 }

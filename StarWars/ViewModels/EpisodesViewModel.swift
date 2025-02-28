@@ -10,36 +10,50 @@ import SwiftUI
 extension EpisodesView {
     final class EpisodesViewModel: ObservableObject {
         private let filmsService: FilmsServiceProtocol
-        @Published var films: [Film]?
+        private let charactersService: CharactersServiceProtocol
+        @Published var episodes: [Episode]?
         @Published var error: AppError?
         
-        init(filmsService: FilmsServiceProtocol) {
+        init(filmsService: FilmsServiceProtocol, charactersService: CharactersServiceProtocol) {
             self.filmsService = filmsService
+            self.charactersService = charactersService
         }
         
-        func fetchEpisodes() async {
+        func fetchData() async {
             do {
-                let fetchedFilms = try await filmsService.fetchFilms()
+                async let filmsTask = filmsService.fetchFilms()
+                async let charactersTask = charactersService.fetchCharacters()
+                let (fetchedFilms, fetchedCharacters) = try await (filmsTask, charactersTask)
                 
-                await updateOnMainThread {
-                    self.films = fetchedFilms
-                    print("SUCCESS")
-                    films?.forEach({ film in
-                        print(film.title)
-                    })
+                // Build a dictionary for fast lookup.
+                let charactersDict = Dictionary(uniqueKeysWithValues: fetchedCharacters.map { ($0.url, $0) })
+                // Map Films and Charaters into Episode
+                let episodes = fetchedFilms.map { film -> Episode in
+                    let filmCharacters = film.characters.compactMap { charactersDict[$0] }
+                    return Episode(
+                        title: film.title,
+                        releaseDate: film.releaseDate,
+                        director: film.director,
+                        episodeId: film.episodeId,
+                        openingCrawl: film.openingCrawl,
+                        url: film.url,
+                        characters: filmCharacters
+                    )
                 }
-            } catch {
-                if let error = error as? AppError {
-                    await updateOnMainThread {
-                        self.error = error
+                
+                await MainActor.run {
+                    self.episodes = episodes
+                    print("SUCCESS")
+                    episodes.forEach { episode in
+                        print("\(episode.title), number of characters: \(episode.characters.count)")
                     }
                 }
-            }
-        }
-        
-        private func updateOnMainThread(_ action: () -> Void) async {
-            await MainActor.run {
-                action()
+            } catch {
+                if let appError = error as? AppError {
+                    await MainActor.run {
+                        self.error = appError
+                    }
+                }
             }
         }
     }
