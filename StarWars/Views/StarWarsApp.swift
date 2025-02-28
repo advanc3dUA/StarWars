@@ -9,9 +9,17 @@ import SwiftUI
 
 @main
 struct StarWarsApp: App {
+    private let networkService: NetworkService
+    private let filmsService: FilmsService
+    
+    init() {
+        self.networkService = NetworkService()
+        self.filmsService = FilmsService(networkService: networkService)
+    }
+    
     var body: some Scene {
         WindowGroup {
-            EpisodesView()
+            EpisodesView(filmsService: filmsService)
         }
     }
 }

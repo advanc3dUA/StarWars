@@ -10,19 +10,18 @@ import SwiftUI
 struct EpisodesView: View {
     @StateObject private var viewModel: EpisodesView.EpisodesViewModel
     
-    init() {
-        let networkService = NetworkService()
-        let filmsService = FilmsService(networkService: networkService)
+    init(filmsService: FilmsServiceProtocol) {
         self._viewModel = StateObject(wrappedValue: EpisodesViewModel(filmsService: filmsService))
     }
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
             .onAppear {
-                viewModel.fetchEpisodes()
+                Task { await viewModel.fetchEpisodes() }
             }
     }
 }
 
 #Preview {
-    EpisodesView()
+    let filmsSerivce = FilmsService(networkService: NetworkService())
+    EpisodesView(filmsService: filmsSerivce)
 }
