@@ -21,7 +21,6 @@ struct EpisodesView: View {
         NavigationView {
             ZStack {
                 BackgroundView()
-                    .ignoresSafeArea()
                 
                 VStack {
                     LogoView()
