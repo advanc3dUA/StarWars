@@ -17,6 +17,13 @@ struct StarWarsApp: App {
         self.networkService = NetworkService()
         self.filmsService = FilmsService(networkService: networkService)
         self.charactersService = CharactersService(networkService: networkService)
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = UIColor.black
+
+        UINavigationBar.appearance().standardAppearance = appearance
+        UINavigationBar.appearance().scrollEdgeAppearance = appearance
     }
     
     var body: some Scene {
