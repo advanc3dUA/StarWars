@@ -21,18 +21,20 @@ struct EpisodeDetailsView: View {
             
             ScrollView {
                 VStack(alignment: .center, spacing: 10) {
-                    // HEADER VIEW
                     headerView
                     
                     Divider()
                         .background(Color.accent)
                     
-                    // CHARACTERS
-                    // DESCRIPTION
+                    charactersView
+                    
+                    Divider()
+                        .background(Color.accent)
+                    
+                    descriptionView
                     
                     Spacer()
                 }
-                
             }
             .overlay(
                 GeometryReader { geometry in
@@ -86,10 +88,28 @@ struct EpisodeDetailsView: View {
         }
         .padding(.horizontal, 10)
     }
+    
+    var charactersView: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: 5) {
+                ForEach(viewModel.episode.characters) { character in
+                    CharacterView(name: character.name)
+                }
+            }
+            .padding(.all, 10)
+        }
+    }
+    
+    var descriptionView: some View {
+        Text(viewModel.episode.openingCrawl)
+            .font(.headline)
+            .foregroundStyle(.white.opacity(0.7))
+            .padding(10)
+    }
 }
 
 #Preview {
-    let characters = [Character(birthYear: "1966", eyeColor: "Brown", films: [""], gender: "", hairColor: "", height: "", homeworld: "", mass: "", name: "Yuriy Gudimov", skinColor: "", created: Date(), edited: Date(), species: [""], starships: [""], url: "", vehicles: [""])]
+    let characters = [Character(birthYear: "1966", eyeColor: "Brown", films: [""], gender: "", hairColor: "", height: "", homeworld: "", mass: "", name: "Pupkin Vasiliy", skinColor: "", created: Date(), edited: Date(), species: [""], starships: [""], url: "", vehicles: [""]), Character(birthYear: "1966", eyeColor: "Brown", films: [""], gender: "", hairColor: "", height: "", homeworld: "", mass: "", name: "Pupkin Vasiliy", skinColor: "", created: Date(), edited: Date(), species: [""], starships: [""], url: "", vehicles: [""]), Character(birthYear: "1966", eyeColor: "Brown", films: [""], gender: "", hairColor: "", height: "", homeworld: "", mass: "", name: "Pupkin Vasiliy", skinColor: "", created: Date(), edited: Date(), species: [""], starships: [""], url: "", vehicles: [""])]
     let episode = Episode(title: "The Empire Strikes Back", releaseDate: "1987-05-25", director: "Yuriy Gudimov", episodeId: 1, openingCrawl: "Long long time ago in a galaxy far, far away...", url: "", characters: characters)
     EpisodeDetailsView(episode: episode)
 }
