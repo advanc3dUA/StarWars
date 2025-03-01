@@ -47,7 +47,7 @@ struct EpisodeDetailsView: View {
             )
             .sheet(item: $selectedCharacter) { character in
                 CharacterDetailsView(character: character)
-                    .presentationDetents([.medium])
+                    .presentationDetents([.fraction(0.5)])
             }
         }
     }
