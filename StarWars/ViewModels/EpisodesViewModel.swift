@@ -13,6 +13,11 @@ extension EpisodesView {
         private let charactersService: CharactersServiceProtocol
         @Published var episodes: [Episode]?
         @Published var error: AppError?
+        @Published var isShowingErrorAlert: Bool = false {
+            didSet {
+                print("set to \(isShowingErrorAlert)")
+            }
+        }
         
         init(filmsService: FilmsServiceProtocol, charactersService: CharactersServiceProtocol) {
             self.filmsService = filmsService
@@ -45,10 +50,16 @@ extension EpisodesView {
                     self.episodes = episodes
                 }
             } catch {
-                if let appError = error as? AppError {
-                    await MainActor.run {
-                        self.error = appError
-                    }
+                let appError: AppError
+                if let convertedError = error as? AppError {
+                    appError = convertedError
+                } else {
+                    appError = .networkServiceError(.otherError(error.localizedDescription))
+                }
+                
+                await MainActor.run {
+                    self.error = appError
+                    self.isShowingErrorAlert = true
                 }
             }
         }

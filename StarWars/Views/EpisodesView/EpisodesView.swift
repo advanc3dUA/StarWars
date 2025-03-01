@@ -48,6 +48,11 @@ struct EpisodesView: View {
         .onAppear {
             Task { await viewModel.fetchData() }
         }
+        .alert("Error occured", isPresented: $viewModel.isShowingErrorAlert) {
+            Button("Ok", role: .cancel) { }
+        } message: {
+            Text("Here is your error message: \(String(describing: viewModel.error)). Please restart the app.")
+        }
     }
 }
 

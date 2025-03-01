@@ -16,6 +16,7 @@ enum AppError: Error {
         case failedRequest(Int)
         case failedToDecodeData(Error)
         case failedToConfigureDecoder
+        case otherError(String)
     }
     
     enum FilmsServiceError: Error {
