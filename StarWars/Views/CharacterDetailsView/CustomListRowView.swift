@@ -19,7 +19,7 @@ struct CustomListRowView: View {
             Spacer()
             
             Text(rowContent)
-                .foregroundStyle(.white.opacity(0.7))
+                .modifier(CustomSecondaryColorModifier())
         }
         .font(.headline)
         .listRowBackground(Color.clear)

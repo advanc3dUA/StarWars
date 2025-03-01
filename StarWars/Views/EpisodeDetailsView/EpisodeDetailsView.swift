@@ -76,7 +76,7 @@ struct EpisodeDetailsView: View {
                 // DIRECTOR
                 Text("Directed by:\n\(viewModel.episode.director)")
                     .font(.headline)
-                    .foregroundStyle(.white.opacity(0.7))
+                    .modifier(CustomSecondaryColorModifier())
                     .multilineTextAlignment(.center)
                 
                 Spacer()
@@ -113,7 +113,7 @@ struct EpisodeDetailsView: View {
     var descriptionView: some View {
         Text(viewModel.episode.openingCrawl)
             .font(.headline)
-            .foregroundStyle(.white.opacity(0.7))
+            .modifier(CustomSecondaryColorModifier())
             .padding(10)
     }
 }

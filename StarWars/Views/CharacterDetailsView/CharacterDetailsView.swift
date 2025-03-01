@@ -26,7 +26,7 @@ struct CharacterDetailsView: View {
                 } header: {
                     Text("About character")
                         .font(.headline)
-                        .foregroundStyle(.white.opacity(0.7))
+                        .modifier(CustomSecondaryColorModifier())
                         .padding(5)
                 }
             }

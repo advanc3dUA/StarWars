@@ -15,7 +15,7 @@ struct CharacterView: View {
             
             Text(name)
                 .font(.headline)
-                .foregroundStyle(.white.opacity(0.7))
+                .modifier(CustomSecondaryColorModifier())
                 .multilineTextAlignment(.center)
             
         }
