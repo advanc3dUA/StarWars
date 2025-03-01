@@ -43,10 +43,6 @@ extension EpisodesView {
                 
                 await MainActor.run {
                     self.episodes = episodes
-                    print("SUCCESS")
-                    episodes.forEach { episode in
-                        print("\(episode.openingCrawl)")
-                    }
                 }
             } catch {
                 if let appError = error as? AppError {
