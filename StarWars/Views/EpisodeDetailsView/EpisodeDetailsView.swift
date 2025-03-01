@@ -10,6 +10,7 @@ import SwiftUI
 struct EpisodeDetailsView: View {
     @StateObject private var viewModel: EpisodeDetailsViewModel
     @State private var screenSize: CGSize?
+    @State private var selectedCharacter: Character?
     
     init(episode: Episode) {
         self._viewModel = StateObject(wrappedValue: EpisodeDetailsView.EpisodeDetailsViewModel(episode: episode))
@@ -44,6 +45,10 @@ struct EpisodeDetailsView: View {
                         }
                 }
             )
+            .sheet(item: $selectedCharacter) { character in
+                CharacterDetailsView(character: character)
+                    .presentationDetents([.medium])
+            }
         }
     }
     
@@ -93,7 +98,12 @@ struct EpisodeDetailsView: View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 5) {
                 ForEach(viewModel.episode.characters) { character in
-                    CharacterView(name: character.name)
+                    Button {
+                        selectedCharacter = character
+                    } label: {
+                        CharacterView(name: character.name)
+                    }
+
                 }
             }
             .padding(.all, 10)
