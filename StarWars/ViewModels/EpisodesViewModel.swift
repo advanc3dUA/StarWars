@@ -35,7 +35,7 @@ extension EpisodesView {
                         releaseDate: film.releaseDate,
                         director: film.director,
                         episodeId: film.episodeId,
-                        openingCrawl: film.openingCrawl,
+                        openingCrawl: removeTextLayout(for: film.openingCrawl),
                         url: film.url,
                         characters: filmCharacters
                     )
@@ -45,7 +45,7 @@ extension EpisodesView {
                     self.episodes = episodes
                     print("SUCCESS")
                     episodes.forEach { episode in
-                        print("\(episode.title), number of characters: \(episode.characters.count)")
+                        print("\(episode.openingCrawl)")
                     }
                 }
             } catch {
@@ -55,6 +55,12 @@ extension EpisodesView {
                     }
                 }
             }
+        }
+        
+        private func removeTextLayout(for text: String) -> String {
+            text
+                .replacingOccurrences(of: "\r", with: "")
+                .replacingOccurrences(of: "\n", with: " ")
         }
     }
 }
