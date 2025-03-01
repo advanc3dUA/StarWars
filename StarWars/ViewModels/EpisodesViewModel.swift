@@ -13,11 +13,7 @@ extension EpisodesView {
         private let charactersService: CharactersServiceProtocol
         @Published var episodes: [Episode]?
         @Published var error: AppError?
-        @Published var isShowingErrorAlert: Bool = false {
-            didSet {
-                print("set to \(isShowingErrorAlert)")
-            }
-        }
+        @Published var isShowingErrorAlert: Bool = false
         
         init(filmsService: FilmsServiceProtocol, charactersService: CharactersServiceProtocol) {
             self.filmsService = filmsService
