@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "465F0D90-F87F-4FAF-8332-CD15F7FA3952",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:StarWars.xcodeproj",
+        "identifier" : "BF4005E92D74552E00ACED37",
+        "name" : "StarWarsTests"
+      }
+    }
+  ],
+  "version" : 1
+}
