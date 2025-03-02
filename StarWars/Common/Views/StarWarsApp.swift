@@ -18,18 +18,28 @@ struct StarWarsApp: App {
         self.filmsService = FilmsService(networkService: networkService)
         self.charactersService = CharactersService(networkService: networkService)
         
+        applyStyle()
+    }
+    
+    var body: some Scene {
+        WindowGroup {
+            EpisodesView(
+                viewModel:
+                    EpisodesViewModel(
+                        filmsService: filmsService,
+                        charactersService: charactersService
+                    )
+            )
+            .preferredColorScheme(.light)
+        }
+    }
+    
+    private func applyStyle() {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = UIColor.black
 
         UINavigationBar.appearance().standardAppearance = appearance
         UINavigationBar.appearance().scrollEdgeAppearance = appearance
-    }
-    
-    var body: some Scene {
-        WindowGroup {
-            EpisodesView(filmsService: filmsService, charactersService: charactersService)
-                .preferredColorScheme(.light)
-        }
     }
 }

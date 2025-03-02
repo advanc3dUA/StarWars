@@ -8,13 +8,9 @@
 import SwiftUI
 
 struct EpisodeDetailsView: View {
-    @StateObject private var viewModel: EpisodeDetailsViewModel
+    @StateObject var viewModel: EpisodeDetailsViewModel
     @State private var screenSize: CGSize?
     @State private var selectedCharacter: Character?
-    
-    init(episode: Episode) {
-        self._viewModel = StateObject(wrappedValue: EpisodeDetailsViewModel(episode: episode))
-    }
     
     var body: some View {
         ZStack {
@@ -117,5 +113,5 @@ struct EpisodeDetailsView: View {
 #Preview {
     let characters = [Character(birthYear: "1966", eyeColor: "Brown", films: [""], gender: "", hairColor: "", height: "", homeworld: "", mass: "", name: "Pupkin Vasiliy", skinColor: "", created: Date(), edited: Date(), species: [""], starships: [""], url: "", vehicles: [""]), Character(birthYear: "1966", eyeColor: "Brown", films: [""], gender: "", hairColor: "", height: "", homeworld: "", mass: "", name: "Pupkin Vasiliy", skinColor: "", created: Date(), edited: Date(), species: [""], starships: [""], url: "", vehicles: [""]), Character(birthYear: "1966", eyeColor: "Brown", films: [""], gender: "", hairColor: "", height: "", homeworld: "", mass: "", name: "Pupkin Vasiliy", skinColor: "", created: Date(), edited: Date(), species: [""], starships: [""], url: "", vehicles: [""])]
     let episode = Episode(title: "The Empire Strikes Back", releaseDate: "1987-05-25", director: "Yuriy Gudimov", episodeId: 1, openingCrawl: "Long long time ago in a galaxy far, far away...", url: "", characters: characters)
-    EpisodeDetailsView(episode: episode)
+    EpisodeDetailsView(viewModel: EpisodeDetailsViewModel(episode: episode))
 }
