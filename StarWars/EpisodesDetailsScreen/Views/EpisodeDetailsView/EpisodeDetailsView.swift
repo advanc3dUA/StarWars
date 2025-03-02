@@ -59,21 +59,18 @@ struct EpisodeDetailsView: View {
             VStack {
                 Spacer()
                 
-                // TITLE
                 Text(viewModel.episode.title)
                     .font(.title)
                 
                     .lineLimit(2, reservesSpace: true)
                     .multilineTextAlignment(.center)
                 
-                // RELEASE DATE
                 Text(viewModel.releaseYear)
                     .font(.headline)
                     .foregroundStyle(.accent.opacity(0.7))
                 
                 Spacer()
                 
-                // DIRECTOR
                 Text("Directed by:\n\(viewModel.episode.director)")
                     .font(.headline)
                     .modifier(CustomSecondaryColorModifier())
@@ -85,7 +82,6 @@ struct EpisodeDetailsView: View {
             
             Spacer()
             
-            // DISPLAY IMAGE
             viewModel.episode.displayImage
                 .resizable()
                 .scaledToFit()
