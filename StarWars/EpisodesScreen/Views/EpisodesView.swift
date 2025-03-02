@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct EpisodesView: View {
-    @StateObject private var viewModel: EpisodesView.EpisodesViewModel
+    @StateObject private var viewModel: EpisodesViewModel
     private var gridColumns: [GridItem] {
         [GridItem(.flexible()), GridItem(.flexible())]
     }
@@ -58,7 +58,7 @@ struct EpisodesView: View {
 
 #Preview {
     let networkService = NetworkService()
-    let filmsSerivce = FilmsService(networkService: networkService)
+    let filmsService = FilmsService(networkService: networkService)
     let charactersService = CharactersService(networkService: networkService)
-    EpisodesView(filmsService: filmsSerivce, charactersService: charactersService)
+    EpisodesView(filmsService: filmsService, charactersService: charactersService)
 }

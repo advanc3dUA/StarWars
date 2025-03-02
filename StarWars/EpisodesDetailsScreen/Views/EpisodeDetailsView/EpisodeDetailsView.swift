@@ -13,7 +13,7 @@ struct EpisodeDetailsView: View {
     @State private var selectedCharacter: Character?
     
     init(episode: Episode) {
-        self._viewModel = StateObject(wrappedValue: EpisodeDetailsView.EpisodeDetailsViewModel(episode: episode))
+        self._viewModel = StateObject(wrappedValue: EpisodeDetailsViewModel(episode: episode))
     }
     
     var body: some View {

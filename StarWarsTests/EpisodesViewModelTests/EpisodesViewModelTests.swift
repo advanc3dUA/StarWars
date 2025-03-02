@@ -8,7 +8,7 @@
 import XCTest
 @testable import StarWars
 
-final class EpisodesViewModelTests: XCTestCase {
+class EpisodesViewModelTests: XCTestCase {
     private var mockFilmsService: MockFilmsService!
     private var mockCharatersService: MockCharactersService!
     private var episodesViewModel: EpisodesView.EpisodesViewModel!
