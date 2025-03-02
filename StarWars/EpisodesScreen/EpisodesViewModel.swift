@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension EpisodesView {
-    final class EpisodesViewModel: ObservableObject {
+    class EpisodesViewModel: ObservableObject {
         private let filmsService: FilmsServiceProtocol
         private let charactersService: CharactersServiceProtocol
         @Published var episodes: [Episode]?

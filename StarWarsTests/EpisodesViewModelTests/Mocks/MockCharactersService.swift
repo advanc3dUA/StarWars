@@ -8,9 +8,11 @@
 import Foundation
 @testable import StarWars
 
-class MockCharactersService: CharactersServiceProtocol {
+class MockCharactersService {
     var characters: [Character] = []
-    
+}
+
+extension MockCharactersService: CharactersServiceProtocol {
     func fetchCharacters() async throws -> [Character] {
         return characters
     }

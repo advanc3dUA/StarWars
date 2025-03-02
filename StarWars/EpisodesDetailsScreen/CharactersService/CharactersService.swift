@@ -7,14 +7,20 @@
 
 import Foundation
 
-final class CharactersService: CharactersServiceProtocol {
+protocol CharactersServiceProtocol {
+    func fetchCharacters() async throws -> [Character]
+}
+
+class CharactersService {
     private let urlString = "https://swapi.dev/api/people/"
     private let networkService: NetworkServiceProtocol
     
     init(networkService: NetworkServiceProtocol) {
         self.networkService = networkService
     }
-    
+}
+
+extension CharactersService: CharactersServiceProtocol {
     func fetchCharacters() async throws -> [Character] {
         guard let url = URL(string: urlString) else {
             throw AppError.charactersServiceError(.invalidURL)

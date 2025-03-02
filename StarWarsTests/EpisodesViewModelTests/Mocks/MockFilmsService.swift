@@ -8,9 +8,11 @@
 import Foundation
 @testable import StarWars
 
-class MockFilmsService: FilmsServiceProtocol {
+class MockFilmsService {
     var films: [Film] = []
-    
+}
+
+extension MockFilmsService: FilmsServiceProtocol {
     func fetchFilms() async throws -> [StarWars.Film] {
         return films
     }

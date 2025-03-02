@@ -8,7 +8,7 @@
 import Foundation
 
 extension EpisodeDetailsView {
-    final class EpisodeDetailsViewModel: ObservableObject {
+    class EpisodeDetailsViewModel: ObservableObject {
         let episode: Episode
         var releaseYear: String {
             let splittedDate = episode.releaseDate.split(separator: "-")
