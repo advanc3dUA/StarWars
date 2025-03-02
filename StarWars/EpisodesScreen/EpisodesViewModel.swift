@@ -48,15 +48,7 @@ class EpisodesViewModel: ObservableObject {
     }
     
     private func makeEpisode(from film: Film, characters: [Character]) -> Episode {
-        Episode(
-            title: film.title,
-            releaseDate: film.releaseDate,
-            director: film.director,
-            episodeId: film.episodeId,
-            openingCrawl: film.openingCrawl.removeLayout,
-            url: film.url,
-            characters: characters
-        )
+        Episode(from: film, with: characters)
     }
     
     private func makeAppError(from error: Error) -> AppError {
