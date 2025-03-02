@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Character: Decodable, Identifiable {
+struct Character: Decodable {
     let id: UUID = UUID()
     let birthYear: String
     let eyeColor: String
@@ -34,3 +34,5 @@ struct Character: Decodable, Identifiable {
         case skinColor = "skin_color"
     }
 }
+
+extension Character: Identifiable { }
