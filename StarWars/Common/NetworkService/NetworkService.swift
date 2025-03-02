@@ -8,11 +8,11 @@
 import Foundation
 
 protocol NetworkServiceProtocol {
-    func fetchData<T: Decodable>(from url: URL, as type: T.Type) async throws -> T
+    func fetchData<Response: Decodable>(from url: URL, as type: Response.Type) async throws -> Response
 }
 
 class NetworkService {
-    let decoder: JSONDecoder
+    private let decoder: JSONDecoder
     
     init() {
         self.decoder = JSONDecoder()
@@ -36,7 +36,7 @@ class NetworkService {
 }
 
 extension NetworkService: NetworkServiceProtocol {
-    func fetchData<T: Decodable>(from url: URL, as type: T.Type) async throws -> T {
+    func fetchData<Response: Decodable>(from url: URL, as type: Response.Type) async throws -> Response {
         let (data, response) = try await URLSession.shared.data(from: url)
         
         if let httpResponse = response as? HTTPURLResponse,
