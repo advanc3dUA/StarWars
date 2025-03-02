@@ -12,7 +12,6 @@ protocol CharactersServiceProtocol {
 }
 
 class CharactersService {
-    private let urlString = "https://swapi.dev/api/people/"
     private let networkService: NetworkServiceProtocol
     
     init(networkService: NetworkServiceProtocol) {
@@ -22,7 +21,7 @@ class CharactersService {
 
 extension CharactersService: CharactersServiceProtocol {
     func fetchCharacters() async throws -> [Character] {
-        guard let url = URL(string: urlString) else {
+        guard let url = URL(string: API.people.path) else {
             throw AppError.charactersServiceError(.invalidURL)
         }
         

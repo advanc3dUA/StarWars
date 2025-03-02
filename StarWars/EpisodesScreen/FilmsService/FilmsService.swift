@@ -12,7 +12,6 @@ protocol FilmsServiceProtocol {
 }
 
 class FilmsService {
-    private let urlString = "https://swapi.dev/api/films/"
     private let networkService: NetworkServiceProtocol
     
     init(networkService: NetworkServiceProtocol) {
@@ -22,7 +21,7 @@ class FilmsService {
 
 extension FilmsService: FilmsServiceProtocol {
     func fetchFilms() async throws -> [Film] {
-        guard let url = URL(string: urlString) else {
+        guard let url = URL(string: API.films.path) else {
             throw AppError.filmsServiceError(.invalidURL)
         }
         
