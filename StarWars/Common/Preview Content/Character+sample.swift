@@ -27,5 +27,11 @@ extension Character {
         vehicles: [""]
     )
 
-    static let samplesArray: [Character] = Array(repeating: .sample, count: 10)
+    static var samplesArray: [Character] {
+        var array: [Character] = []
+        (1...10).forEach { number in
+            array.append(Character(from: .sample, with: "https://\(number).de"))
+        }
+        return array
+    }
 }

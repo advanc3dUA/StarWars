@@ -35,4 +35,25 @@ struct Character: Decodable {
     }
 }
 
+extension Character {
+    init(from character: Character, with url: String) {
+        self.birthYear = character.birthYear
+        self.eyeColor = character.eyeColor
+        self.films = character.films
+        self.gender = character.gender
+        self.hairColor = character.hairColor
+        self.height = character.height
+        self.homeworld = character.homeworld
+        self.mass = character.mass
+        self.name = character.name
+        self.skinColor = character.skinColor
+        self.created = character.created
+        self.edited = character.edited
+        self.species = character.species
+        self.starships = character.starships
+        self.url = url
+        self.vehicles = character.vehicles
+    }
+}
+
 extension Character: Identifiable { }

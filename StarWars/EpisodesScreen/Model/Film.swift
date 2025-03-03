@@ -30,3 +30,22 @@ struct Film: Decodable {
         case releaseDate = "release_date"
     }
 }
+
+extension Film {
+    init(from film: Film, with url: String) {
+        self.characters = film.characters
+        self.created = film.created
+        self.director = film.director
+        self.edited = film.edited
+        self.episodeId = film.episodeId
+        self.openingCrawl = film.openingCrawl
+        self.planets = film.planets
+        self.producer = film.producer
+        self.releaseDate = film.releaseDate
+        self.species = film.species
+        self.starships = film.starships
+        self.title = film.title
+        self.url = url
+        self.vehicles = film.vehicles
+    }
+}

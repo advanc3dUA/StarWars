@@ -24,6 +24,12 @@ extension Film {
         url: "",
         vehicles: [""]
     )
-    
-    static let samplesArray = Array(repeating: sample, count: 10)
+
+    static var samplesArray: [Film] {
+        var array: [Film] = []
+        (1...10).forEach { number in
+            array.append(Film(from: .sample, with: "https://\(number).de"))
+        }
+        return array
+    }
 }
