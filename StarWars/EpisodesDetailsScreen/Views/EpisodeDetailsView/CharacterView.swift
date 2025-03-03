@@ -11,17 +11,29 @@ struct CharacterView: View {
     let name: String
     var body: some View {
         ZStack {
-            LinearGradient(colors: [.brown, .black], startPoint: .topLeading, endPoint: .bottomTrailing)
+            background
             
-            Text(name)
-                .font(.headline)
-                .modifier(CustomSecondaryColorModifier())
-                .multilineTextAlignment(.center)
+            characterName
             
         }
         .frame(width: 100, height: 75)
         .clipShape(.rect(cornerRadius: 10))
         .padding(.horizontal, 2)
+    }
+    
+    var background: some View {
+        LinearGradient(
+            colors: [.brown, .black],
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing
+        )
+    }
+    
+    var characterName: some View {
+        Text(name)
+            .font(.headline)
+            .opaqueColor()
+            .multilineTextAlignment(.center)
     }
 }
 

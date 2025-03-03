@@ -1,5 +1,5 @@
 //
-//  CustomListRowView.swift
+//  CharacterListRowView.swift
 //  StarWars
 //
 //  Created by Yuriy Gudimov on 01.03.25.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CustomListRowView: View {
+struct CharacterListRowView: View {
     @State var rowLabel: String
     @State var rowContent: String
     
@@ -19,7 +19,7 @@ struct CustomListRowView: View {
             Spacer()
             
             Text(rowContent)
-                .modifier(CustomSecondaryColorModifier())
+                .opaqueColor()
         }
         .font(.headline)
         .listRowBackground(Color.clear)
@@ -27,5 +27,5 @@ struct CustomListRowView: View {
 }
 
 #Preview {
-    CustomListRowView(rowLabel: "Name", rowContent: "Luke Skywalker")
+    CharacterListRowView(rowLabel: "Name", rowContent: "Luke Skywalker")
 }

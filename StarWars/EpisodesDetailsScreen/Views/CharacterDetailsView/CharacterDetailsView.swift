@@ -16,17 +16,17 @@ struct CharacterDetailsView: View {
             
             List {
                 Section {
-                    CustomListRowView(rowLabel: "Name", rowContent: character.name)
-                    CustomListRowView(rowLabel: "Date of birth", rowContent: character.birthYear)
-                    CustomListRowView(rowLabel: "Gender", rowContent: character.gender)
-                    CustomListRowView(rowLabel: "Eye color", rowContent: character.eyeColor)
-                    CustomListRowView(rowLabel: "Hair color", rowContent: character.hairColor)
-                    CustomListRowView(rowLabel: "Skin color", rowContent: character.skinColor)
-                    CustomListRowView(rowLabel: "Mass", rowContent: character.mass)
+                    CharacterListRowView(rowLabel: "Name", rowContent: character.name)
+                    CharacterListRowView(rowLabel: "Date of birth", rowContent: character.birthYear)
+                    CharacterListRowView(rowLabel: "Gender", rowContent: character.gender)
+                    CharacterListRowView(rowLabel: "Eye color", rowContent: character.eyeColor)
+                    CharacterListRowView(rowLabel: "Hair color", rowContent: character.hairColor)
+                    CharacterListRowView(rowLabel: "Skin color", rowContent: character.skinColor)
+                    CharacterListRowView(rowLabel: "Mass", rowContent: character.mass)
                 } header: {
                     Text("About character")
                         .font(.headline)
-                        .modifier(CustomSecondaryColorModifier())
+                        .opaqueColor()
                         .padding(5)
                 }
             }

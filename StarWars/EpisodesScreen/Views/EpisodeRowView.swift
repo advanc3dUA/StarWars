@@ -12,40 +12,54 @@ struct EpisodeRowView: View {
     
     var body: some View {
         ZStack {
-            Rectangle()
-                .stroke(style: .init(lineWidth: 2))
-                .foregroundStyle(
-                    LinearGradient(colors: [.yellow, .brown], startPoint: .topLeading, endPoint: .bottomTrailing)
-                )
-                .padding(5)
+            gradientBorder
             
             VStack(alignment: .center) {
-                episode.displayImage
-                    .resizable()
-                    .scaledToFit()
+                episodeLogo
                 
                 Spacer()
                 
-                Text(episode.title)
-                    .font(.headline)
-                    .fontWeight(.bold)
-                    .lineLimit(2, reservesSpace: true)
-                    .multilineTextAlignment(.center)
-                
+                episodeTitle
+                                
                 Spacer()
                 
-                Text(episode.releaseDate)
-                    .font(.subheadline)
-                    .fontWeight(.bold)
+                episodeReleaseDate
             }
             .foregroundStyle(.white.opacity(0.8))
             .padding()
         }
     }
+    
+    var gradientBorder: some View {
+        Rectangle()
+            .stroke(style: .init(lineWidth: 2))
+            .foregroundStyle(
+                LinearGradient(colors: [.yellow, .brown], startPoint: .topLeading, endPoint: .bottomTrailing)
+            )
+            .padding(5)
+    }
+    
+    var episodeLogo: some View {
+        episode.displayImage
+            .resizable()
+            .scaledToFit()
+    }
+    
+    var episodeTitle: some View {
+        Text(episode.title)
+            .font(.headline)
+            .fontWeight(.bold)
+            .lineLimit(2, reservesSpace: true)
+            .multilineTextAlignment(.center)
+    }
+    
+    var episodeReleaseDate: some View {
+        Text(episode.releaseDate)
+            .font(.subheadline)
+            .fontWeight(.bold)
+    }
 }
 
 #Preview {
-    let characters = [Character(birthYear: "1966", eyeColor: "Brown", films: [""], gender: "", hairColor: "", height: "", homeworld: "", mass: "", name: "Yuriy Gudimov", skinColor: "", created: Date(), edited: Date(), species: [""], starships: [""], url: "", vehicles: [""])]
-    let episode = Episode(title: "The episode title", releaseDate: "1987-05-25", director: "Yuriy Gudimov", episodeId: 1, openingCrawl: "Long long time ago in a galaxy far, far away...", url: "", characters: characters)
-    EpisodeRowView(episode: episode)
+    EpisodeRowView(episode: Episode.sample)
 }

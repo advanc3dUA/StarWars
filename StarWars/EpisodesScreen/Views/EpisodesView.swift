@@ -20,24 +20,7 @@ struct EpisodesView: View {
                 
                 VStack {
                     LogoView()
-                    
-                    if let episodes = viewModel.episodes {
-                        ScrollView {
-                            LazyVGrid(columns: gridColumns, spacing: 10) {
-                                ForEach(episodes) { episode in
-                                    NavigationLink {
-                                        EpisodeDetailsView(viewModel: EpisodeDetailsViewModel(episode: episode))
-                                    } label: {
-                                        EpisodeRowView(episode: episode)
-                                    }
-                                    
-                                }
-                            }
-                        }
-                        .scrollIndicators(.hidden)
-                    } else {
-                        ProgressView()
-                    }
+                    episodesLazyVGrid
                 }
             }
         }
@@ -48,6 +31,27 @@ struct EpisodesView: View {
             Button("Ok", role: .cancel) { }
         } message: {
             Text("Here is your error message: \(String(describing: viewModel.error)). Please restart the app.")
+        }
+    }
+    
+    @ViewBuilder
+    var episodesLazyVGrid: some View {
+        if let episodes = viewModel.episodes {
+            ScrollView {
+                LazyVGrid(columns: gridColumns, spacing: 10) {
+                    ForEach(episodes) { episode in
+                        NavigationLink {
+                            EpisodeDetailsView(viewModel: EpisodeDetailsViewModel(episode: episode))
+                        } label: {
+                            EpisodeRowView(episode: episode)
+                        }
+                        
+                    }
+                }
+            }
+            .scrollIndicators(.hidden)
+        } else {
+            ProgressView()
         }
     }
 }
