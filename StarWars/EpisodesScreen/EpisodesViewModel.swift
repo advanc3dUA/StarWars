@@ -28,8 +28,7 @@ class EpisodesViewModel: ObservableObject {
 
             let charactersDictionary = makeDictionary(from: fetchedCharacters)
             let episodes = fetchedFilms.map { film -> Episode in
-                let filmCharacters = film.characters.compactMap { charactersDictionary[$0] }
-                return makeEpisode(from: film, characters: filmCharacters)
+                makeEpisode(from: film, charactersDictionary: charactersDictionary)
             }
 
             await MainActor.run {
@@ -47,8 +46,9 @@ class EpisodesViewModel: ObservableObject {
         Dictionary(uniqueKeysWithValues: characters.map { ($0.url, $0) })
     }
 
-    private func makeEpisode(from film: Film, characters: [Character]) -> Episode {
-        Episode(from: film, with: characters)
+    private func makeEpisode(from film: Film, charactersDictionary: [String: Character]) -> Episode {
+        let filmCharacters = film.characters.compactMap { charactersDictionary[$0] }
+        return Episode(from: film, with: filmCharacters)
     }
 
     private func makeAppError(from error: Error) -> AppError {
