@@ -8,7 +8,7 @@
 import Foundation
 
 extension Character {
-    static let sampleCharacter = Character(
+    static let sample = Character(
         birthYear: "1975",
         eyeColor: "Brown",
         films: [""],
@@ -27,5 +27,5 @@ extension Character {
         vehicles: [""]
     )
 
-    static let sampleCharacters: [Character] = Array(repeating: .sampleCharacter, count: 10)
+    static let samplesArray: [Character] = Array(repeating: .sample, count: 10)
 }

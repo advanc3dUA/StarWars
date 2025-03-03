@@ -12,20 +12,12 @@ class EpisodesViewModelTests: XCTestCase {
     private var mockFilmsService: MockFilmsService!
     private var mockCharaсtersService: MockCharactersService!
     private var episodesViewModel: EpisodesViewModel!
-    private var date: Date!
-    private var films: [Film]!
-    private var characters: [Character]!
 
     override func setUpWithError() throws {
         mockFilmsService = MockFilmsService()
         mockCharaсtersService = MockCharactersService()
-        date = Date()
-
-        films = [Film(characters: [""], created: date, director: "Creative Person", edited: date, episodeId: 1, openingCrawl: "Long long long text here", planets: [""], producer: "Another Guy", releaseDate: "2025-02-28", species: [""], starships: [""], title: "Clones Attack", url: "", vehicles: [""])]
-        characters = [Character(birthYear: "1966", eyeColor: "Brown", films: [""], gender: "Male", hairColor: "Blond", height: "1.5m", homeworld: "", mass: "75", name: "Luke Skywalker", skinColor: "White", created: date, edited: date, species: [""], starships: [""], url: "", vehicles: [""])]
-
-        mockFilmsService.films = films
-        mockCharaсtersService.characters = characters
+        mockFilmsService.films = Film.samplesArray
+        mockCharaсtersService.characters = Character.samplesArray
 
         episodesViewModel = EpisodesViewModel(filmsService: mockFilmsService, charactersService: mockCharaсtersService)
     }
@@ -33,9 +25,6 @@ class EpisodesViewModelTests: XCTestCase {
     override func tearDownWithError() throws {
         mockFilmsService = nil
         mockCharaсtersService = nil
-        date = nil
-        films = nil
-        characters = nil
         episodesViewModel = nil
     }
 

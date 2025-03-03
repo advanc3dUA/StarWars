@@ -15,6 +15,6 @@ extension Episode {
         episodeId: 1,
         openingCrawl: "Long long time ago in a galaxy far, far away...",
         url: "",
-        characters: Character.sampleCharacters
+        characters: Character.samplesArray
     )
 }

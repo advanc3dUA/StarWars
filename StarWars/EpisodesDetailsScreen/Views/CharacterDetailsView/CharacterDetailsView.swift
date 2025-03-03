@@ -37,5 +37,5 @@ struct CharacterDetailsView: View {
 }
 
 #Preview {
-    CharacterDetailsView(character: Character.sampleCharacter)
+    CharacterDetailsView(character: Character.sample)
 }
