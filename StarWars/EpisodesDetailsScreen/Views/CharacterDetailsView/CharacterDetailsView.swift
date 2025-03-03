@@ -9,11 +9,11 @@ import SwiftUI
 
 struct CharacterDetailsView: View {
     @State var character: Character
-    
+
     var body: some View {
         ZStack {
             BackgroundView()
-            
+
             List {
                 Section {
                     CharacterListRowView(rowLabel: "Name", rowContent: character.name)

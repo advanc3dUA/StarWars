@@ -13,7 +13,7 @@ protocol FilmsServiceProtocol {
 
 class FilmsService {
     private let networkService: NetworkServiceProtocol
-    
+
     init(networkService: NetworkServiceProtocol) {
         self.networkService = networkService
     }
@@ -24,7 +24,7 @@ extension FilmsService: FilmsServiceProtocol {
         guard let url = URL(string: API.films.path) else {
             throw AppError.filmsServiceError(.invalidURL)
         }
-        
+
         let response = try await networkService.fetchData(from: url, as: FilmsResponse.self)
         return response.films
     }

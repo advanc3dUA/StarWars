@@ -26,6 +26,6 @@ extension Character {
         url: "",
         vehicles: [""]
     )
-    
+
     static let sampleCharacters: [Character] = Array(repeating: .sampleCharacter, count: 10)
 }

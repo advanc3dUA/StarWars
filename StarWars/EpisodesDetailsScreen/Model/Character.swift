@@ -25,7 +25,7 @@ struct Character: Decodable {
     let starships: [String]
     let url: String
     let vehicles: [String]
-    
+
     enum CodingKeys: String, CodingKey {
         case films, gender, height, homeworld, mass, name, created, edited, species, starships, url, vehicles
         case birthYear = "birth_year"

@@ -13,7 +13,7 @@ class EpisodeDetailsViewModel: ObservableObject {
         let splitDate = episode.releaseDate.split(separator: "-")
         return String(splitDate[0])
     }
-    
+
     init(episode: Episode) {
         self.episode = episode
     }

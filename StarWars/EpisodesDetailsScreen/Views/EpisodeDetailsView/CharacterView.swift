@@ -12,15 +12,15 @@ struct CharacterView: View {
     var body: some View {
         ZStack {
             background
-            
+
             characterName
-            
+
         }
         .frame(width: 100, height: 75)
         .clipShape(.rect(cornerRadius: 10))
         .padding(.horizontal, 2)
     }
-    
+
     var background: some View {
         LinearGradient(
             colors: [.brown, .black],
@@ -28,7 +28,7 @@ struct CharacterView: View {
             endPoint: .bottomTrailing
         )
     }
-    
+
     var characterName: some View {
         Text(name)
             .font(.headline)

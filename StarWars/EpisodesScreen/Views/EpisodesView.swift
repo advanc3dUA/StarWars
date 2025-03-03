@@ -12,12 +12,12 @@ struct EpisodesView: View {
     private var gridColumns: [GridItem] {
         [GridItem(.flexible()), GridItem(.flexible())]
     }
-    
+
     var body: some View {
         NavigationView {
             ZStack {
                 BackgroundView()
-                
+
                 VStack {
                     LogoView()
                     episodesLazyVGrid
@@ -33,7 +33,7 @@ struct EpisodesView: View {
             Text("Here is your error message: \(String(describing: viewModel.error)). Please restart the app.")
         }
     }
-    
+
     @ViewBuilder
     var episodesLazyVGrid: some View {
         if let episodes = viewModel.episodes {
@@ -45,7 +45,7 @@ struct EpisodesView: View {
                         } label: {
                             EpisodeRowView(episode: episode)
                         }
-                        
+
                     }
                 }
             }

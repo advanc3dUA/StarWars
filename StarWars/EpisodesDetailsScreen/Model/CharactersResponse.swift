@@ -9,7 +9,7 @@ import Foundation
 
 struct CharactersResponse: Decodable {
     let characters: [Character]
-    
+
     enum CodingKeys: String, CodingKey {
             case characters = "results"
     }

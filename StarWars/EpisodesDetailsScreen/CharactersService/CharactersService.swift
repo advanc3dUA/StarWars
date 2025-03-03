@@ -13,7 +13,7 @@ protocol CharactersServiceProtocol {
 
 class CharactersService {
     private let networkService: NetworkServiceProtocol
-    
+
     init(networkService: NetworkServiceProtocol) {
         self.networkService = networkService
     }
@@ -24,7 +24,7 @@ extension CharactersService: CharactersServiceProtocol {
         guard let url = URL(string: API.people.path) else {
             throw AppError.charactersServiceError(.invalidURL)
         }
-        
+
         let response = try await networkService.fetchData(from: url, as: CharactersResponse.self)
         return response.characters
     }

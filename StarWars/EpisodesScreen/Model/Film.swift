@@ -22,7 +22,7 @@ struct Film: Decodable {
     let title: String
     let url: String
     let vehicles: [String]
-    
+
     enum CodingKeys: String, CodingKey {
         case characters, created, director, edited, planets, producer, species, starships, title, url, vehicles
         case episodeId = "episode_id"

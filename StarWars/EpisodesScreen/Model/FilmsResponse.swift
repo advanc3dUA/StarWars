@@ -9,7 +9,7 @@ import Foundation
 
 struct FilmsResponse: Decodable {
     let films: [Film]
-    
+
     enum CodingKeys: String, CodingKey {
         case films = "results"
     }

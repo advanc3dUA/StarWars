@@ -16,7 +16,7 @@ extension API {
     var baseURL: String {
         "https://swapi.dev/api/"
     }
-    
+
     var path: String {
         baseURL + self.rawValue
     }

@@ -13,7 +13,7 @@ protocol NetworkServiceProtocol {
 
 class NetworkService {
     private let decoder: JSONDecoder
-    
+
     init() {
         self.decoder = JSONDecoder()
         configureDecoder()
@@ -22,7 +22,7 @@ class NetworkService {
     private func configureDecoder() {
         let formatter = ISO8601DateFormatter()
         formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
-        
+
         decoder.dateDecodingStrategy = .custom { decoder in
             let container = try decoder.singleValueContainer()
             let dateString = try container.decode(String.self)
@@ -38,12 +38,12 @@ class NetworkService {
 extension NetworkService: NetworkServiceProtocol {
     func fetchData<Response: Decodable>(from url: URL, as type: Response.Type) async throws -> Response {
         let (data, response) = try await URLSession.shared.data(from: url)
-        
+
         if let httpResponse = response as? HTTPURLResponse,
            !(200...299).contains(httpResponse.statusCode) {
             throw AppError.networkServiceError(.failedRequest(httpResponse.statusCode))
         }
-        
+
         do {
             let decodedData = try decoder.decode(type, from: data)
             return decodedData

@@ -11,25 +11,25 @@ struct EpisodeDetailsView: View {
     @StateObject var viewModel: EpisodeDetailsViewModel
     @State private var screenSize: CGSize?
     @State private var selectedCharacter: Character?
-    
+
     var body: some View {
         ZStack {
             BackgroundView()
-            
+
             ScrollView {
                 VStack(alignment: .center, spacing: 10) {
                     headerView
-                    
+
                     Divider()
                         .background(Color.accent)
-                    
+
                     charactersView
-                    
+
                     Divider()
                         .background(Color.accent)
-                    
+
                     descriptionView
-                    
+
                     Spacer()
                 }
             }
@@ -47,37 +47,37 @@ struct EpisodeDetailsView: View {
             }
         }
     }
-    
+
     var headerView: some View {
         HStack {
             Spacer()
-            
+
             VStack {
                 Spacer()
-                
+
                 Text(viewModel.episode.title)
                     .font(.title)
-                
+
                     .lineLimit(2, reservesSpace: true)
                     .multilineTextAlignment(.center)
-                
+
                 Text(viewModel.releaseYear)
                     .font(.headline)
                     .foregroundStyle(.accent.opacity(0.7))
-                
+
                 Spacer()
-                
+
                 Text("Directed by:\n\(viewModel.episode.director)")
                     .font(.headline)
                     .opaqueColor()
                     .multilineTextAlignment(.center)
-                
+
                 Spacer()
             }
             .foregroundStyle(.accent)
-            
+
             Spacer()
-            
+
             viewModel.episode.displayImage
                 .resizable()
                 .scaledToFit()
@@ -85,7 +85,7 @@ struct EpisodeDetailsView: View {
         }
         .padding(.horizontal, 10)
     }
-    
+
     var charactersView: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 5) {
@@ -101,7 +101,7 @@ struct EpisodeDetailsView: View {
             .padding(.all, 10)
         }
     }
-    
+
     var descriptionView: some View {
         Text(viewModel.episode.openingCrawl)
             .font(.headline)

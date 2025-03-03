@@ -12,15 +12,15 @@ struct StarWarsApp: App {
     private let networkService: NetworkService
     private let filmsService: FilmsService
     private let charactersService: CharactersService
-    
+
     init() {
         self.networkService = NetworkService()
         self.filmsService = FilmsService(networkService: networkService)
         self.charactersService = CharactersService(networkService: networkService)
-        
+
         applyStyle()
     }
-    
+
     var body: some Scene {
         WindowGroup {
             EpisodesView(
@@ -33,7 +33,7 @@ struct StarWarsApp: App {
             .preferredColorScheme(.light)
         }
     }
-    
+
     private func applyStyle() {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()

@@ -10,14 +10,14 @@ import SwiftUI
 struct CharacterListRowView: View {
     @State var rowLabel: String
     @State var rowContent: String
-    
+
     var body: some View {
         HStack {
             Text(rowLabel)
                 .foregroundStyle(.accent)
-            
+
             Spacer()
-            
+
             Text(rowContent)
                 .opaqueColor()
         }
