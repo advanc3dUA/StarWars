@@ -69,7 +69,7 @@ struct EpisodeDetailsView: View {
                 
                 Text("Directed by:\n\(viewModel.episode.director)")
                     .font(.headline)
-                    .modifier(CustomSecondaryColorModifier())
+                    .opaqueColor()
                     .multilineTextAlignment(.center)
                 
                 Spacer()
@@ -105,13 +105,11 @@ struct EpisodeDetailsView: View {
     var descriptionView: some View {
         Text(viewModel.episode.openingCrawl)
             .font(.headline)
-            .modifier(CustomSecondaryColorModifier())
+            .opaqueColor()
             .padding(10)
     }
 }
 
 #Preview {
-    let characters = [Character(birthYear: "1966", eyeColor: "Brown", films: [""], gender: "", hairColor: "", height: "", homeworld: "", mass: "", name: "Pupkin Vasiliy", skinColor: "", created: Date(), edited: Date(), species: [""], starships: [""], url: "", vehicles: [""]), Character(birthYear: "1966", eyeColor: "Brown", films: [""], gender: "", hairColor: "", height: "", homeworld: "", mass: "", name: "Pupkin Vasiliy", skinColor: "", created: Date(), edited: Date(), species: [""], starships: [""], url: "", vehicles: [""]), Character(birthYear: "1966", eyeColor: "Brown", films: [""], gender: "", hairColor: "", height: "", homeworld: "", mass: "", name: "Pupkin Vasiliy", skinColor: "", created: Date(), edited: Date(), species: [""], starships: [""], url: "", vehicles: [""])]
-    let episode = Episode(title: "The Empire Strikes Back", releaseDate: "1987-05-25", director: "Yuriy Gudimov", episodeId: 1, openingCrawl: "Long long time ago in a galaxy far, far away...", url: "", characters: characters)
-    EpisodeDetailsView(viewModel: EpisodeDetailsViewModel(episode: episode))
+    EpisodeDetailsView(viewModel: EpisodeDetailsViewModel(episode: Episode.sample))
 }

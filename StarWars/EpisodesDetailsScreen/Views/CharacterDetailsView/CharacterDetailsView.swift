@@ -37,6 +37,5 @@ struct CharacterDetailsView: View {
 }
 
 #Preview {
-    let character = Character(birthYear: "1966", eyeColor: "Brown", films: [""], gender: "", hairColor: "", height: "", homeworld: "", mass: "", name: "Pupkin Vasiliy", skinColor: "", created: Date(), edited: Date(), species: [""], starships: [""], url: "", vehicles: [""])
-    CharacterDetailsView(character: character)
+    CharacterDetailsView(character: Character.sampleCharacter)
 }
