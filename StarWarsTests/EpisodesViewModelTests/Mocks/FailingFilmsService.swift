@@ -9,11 +9,15 @@ import Foundation
 @testable import StarWars
 
 class FailingFilmsService {
-    enum TestError: Error { case simulatedError }
+    var error: Error
+
+    init(error: Error) {
+        self.error = error
+    }
 }
 
 extension FailingFilmsService: FilmsServiceProtocol {
     func fetchFilms() async throws -> [Film] {
-        throw TestError.simulatedError
+        throw error
     }
 }
